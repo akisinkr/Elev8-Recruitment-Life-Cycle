@@ -1,0 +1,567 @@
+import { RecruitmentStage } from "@/types/stage";
+import { STAGE_COLORS } from "@/lib/constants";
+
+export const stages: RecruitmentStage[] = [
+  {
+    id: "workforce-planning",
+    number: 1,
+    name: "Workforce Planning & Approval",
+    shortName: "Planning",
+    description:
+      "Hiring Manager identifies the recruiting need, gets SVP approval via email, and the recruiter creates the requisition in Workday for formal approval.",
+    color: STAGE_COLORS[0],
+    icon: "ClipboardList",
+    responsibleTeam: ["Hiring Manager", "SVP", "Recruiter"],
+    subSteps: [
+      {
+        title: "Identify Hiring Need",
+        description: "HM identifies gaps in team capacity, skills, or upcoming projects requiring new talent.",
+      },
+      {
+        title: "SVP Approval",
+        description: "HM submits request to respective SVP for budget and headcount approval via email.",
+      },
+      {
+        title: "Workday Requisition",
+        description: "Recruiter inputs approved requisition into Workday system for formal tracking and approval workflow.",
+      },
+    ],
+    kpis: [
+      { label: "Avg. Approval Time", value: 12, unit: "days", target: 5, trend: "down" },
+      { label: "Requisitions Open", value: 47, unit: "count", target: 35, trend: "up" },
+      { label: "Forecast Accuracy", value: 68, unit: "%", target: 85, trend: "up" },
+      { label: "Budget Utilization", value: 82, unit: "%", target: 90, trend: "flat" },
+    ],
+    tasks: [
+      { title: "Skills gap analysis", owner: "Hiring Manager" },
+      { title: "Headcount approval request", owner: "Hiring Manager" },
+      { title: "Budget sign-off", owner: "SVP" },
+      { title: "Workday requisition entry", owner: "Recruiter" },
+    ],
+    tools: [
+      { name: "Workday", category: "current", description: "Requisition management and approval workflows" },
+      { name: "Email", category: "current", description: "SVP approval communication" },
+      { name: "Excel/Sheets", category: "current", description: "Headcount planning spreadsheets" },
+      { name: "Eightfold AI", category: "recommended", description: "Predictive workforce planning with skills taxonomy and attrition forecasting" },
+      { name: "Visier", category: "recommended", description: "People analytics for data-driven headcount decisions" },
+    ],
+    aiOpportunities: [
+      {
+        title: "Predictive Workforce Analytics",
+        description: "AI models trained on historical data to forecast attrition, predict skills gaps, and recommend optimal hiring timelines.",
+        estimatedImpact: "60% faster planning cycles",
+        effort: "high",
+        caseStudy: "Eightfold AI: Deep-learning models on billions of talent profiles, $2B+ valuation, Fortune 500 clients.",
+      },
+      {
+        title: "Automated Approval Routing",
+        description: "Replace email-based approvals with intelligent routing that auto-escalates and tracks SLAs.",
+        estimatedImpact: "70% reduction in approval time",
+        effort: "medium",
+      },
+      {
+        title: "Skills Taxonomy Engine",
+        description: "AI-powered skills mapping that identifies adjacent skills and internal mobility opportunities before external hiring.",
+        estimatedImpact: "15-20% fewer external hires needed",
+        effort: "high",
+      },
+    ],
+    aiEffectiveness: [
+      { metric: "Planning Cycle Time", before: 30, after: 12, unit: "days", source: "Deloitte 2025 TA Research" },
+      { metric: "Forecast Accuracy", before: 60, after: 85, unit: "%", source: "Eightfold AI Client Data" },
+      { metric: "Internal Mobility Fill Rate", before: 15, after: 30, unit: "%", source: "Beamery Platform Data" },
+    ],
+    traditionalApproach: "Manual spreadsheets, annual planning cycles, email-based approvals with no tracking.",
+    challenges: [
+      "SVP approval bottleneck — no SLA tracking on email approvals",
+      "Reactive planning — hiring starts only after attrition occurs",
+      "Siloed headcount data across departments",
+      "No visibility into skills gaps until role is vacant",
+    ],
+  },
+  {
+    id: "intake-job-design",
+    number: 2,
+    name: "Intake & Job Design",
+    shortName: "Intake & JD",
+    description:
+      "Recruiter conducts an intake meeting with the Hiring Manager to align on role requirements, then creates the job description and posts it to relevant channels.",
+    color: STAGE_COLORS[1],
+    icon: "FileText",
+    responsibleTeam: ["Recruiter", "Hiring Manager"],
+    subSteps: [
+      {
+        title: "Intake Meeting",
+        description: "Recruiter meets with HM to discuss role requirements, must-haves vs nice-to-haves, team dynamics, and timeline.",
+      },
+      {
+        title: "JD Creation",
+        description: "Recruiter drafts job description based on intake meeting, incorporating role requirements, qualifications, and company value proposition.",
+      },
+      {
+        title: "Job Posting",
+        description: "Finalized JD is posted to Workday careers page and relevant external channels.",
+      },
+    ],
+    kpis: [
+      { label: "Intake-to-Post Time", value: 7, unit: "days", target: 3, trend: "down" },
+      { label: "JD Quality Score", value: 62, unit: "%", target: 85, trend: "up" },
+      { label: "Candidate Apply Rate", value: 4.2, unit: "%", target: 6, trend: "up" },
+      { label: "JD Revision Cycles", value: 2.8, unit: "avg", target: 1, trend: "down" },
+    ],
+    tasks: [
+      { title: "Schedule & conduct intake meeting", owner: "Recruiter" },
+      { title: "Define must-haves vs nice-to-haves", owner: "Hiring Manager" },
+      { title: "Draft job description", owner: "Recruiter" },
+      { title: "Review & approve JD", owner: "Hiring Manager" },
+      { title: "Post to channels", owner: "Recruiter" },
+    ],
+    tools: [
+      { name: "Workday", category: "current", description: "Job posting and requisition management" },
+      { name: "Google Docs", category: "current", description: "JD drafting and collaboration" },
+      { name: "LinkedIn Hiring Assistant", category: "recommended", description: "AI agent that auto-generates job descriptions from intake notes, recommends optimal posting channels" },
+      { name: "Textio", category: "recommended", description: "AI-powered writing platform that scores JDs for inclusivity, clarity, and candidate appeal" },
+    ],
+    aiOpportunities: [
+      {
+        title: "AI-Generated Job Descriptions",
+        description: "LinkedIn's Hiring Assistant auto-creates JDs from intake meeting notes, optimized for inclusivity and conversion.",
+        estimatedImpact: "80% faster JD creation, 15% higher apply rate",
+        effort: "low",
+        caseStudy: "LinkedIn Hiring Assistant: Built on LangGraph, saves 6-8 hours per search for early adopters.",
+      },
+      {
+        title: "Inclusive Language Scoring",
+        description: "AI analyzes JD text for bias, gendered language, and unnecessary requirements that deter diverse candidates.",
+        estimatedImpact: "48% increase in diversity of applicant pool",
+        effort: "low",
+        caseStudy: "IQTalent 2026: Purpose-built AI achieved 48% improvement in diversity hiring effectiveness.",
+      },
+      {
+        title: "Skills-Based JD Optimization",
+        description: "AI rewrites JDs to focus on skills rather than credentials, expanding the qualified candidate pool.",
+        estimatedImpact: "30% larger qualified applicant pool",
+        effort: "medium",
+      },
+    ],
+    aiEffectiveness: [
+      { metric: "JD Creation Time", before: 4, after: 0.5, unit: "hours", source: "LinkedIn Hiring Assistant Pilots" },
+      { metric: "Apply Rate", before: 4, after: 6, unit: "%", source: "Industry Average 2024" },
+      { metric: "Diversity of Applicants", before: 28, after: 41, unit: "%", source: "IQTalent 2026 Report" },
+    ],
+    traditionalApproach: "Manual JD drafting from templates, multiple revision cycles via email, keyword-stuffed descriptions.",
+    challenges: [
+      "Multiple JD revision cycles between recruiter and HM",
+      "Generic JDs that don't differentiate the role",
+      "Unconscious bias in language (gendered terms, unnecessary degree requirements)",
+      "Slow posting turnaround delays entire pipeline",
+    ],
+  },
+  {
+    id: "sourcing-outreach",
+    number: 3,
+    name: "Sourcing & Outreach",
+    shortName: "Sourcing",
+    description:
+      "Sourcing team conducts market research, identifies the best channels, and proactively reaches out to passive candidates via LinkedIn and other platforms.",
+    color: STAGE_COLORS[2],
+    icon: "Search",
+    responsibleTeam: ["Sourcing Team", "Recruiter"],
+    subSteps: [
+      {
+        title: "Market Research",
+        description: "Sourcing team researches talent landscape, competitor hiring patterns, and salary benchmarks for the role.",
+      },
+      {
+        title: "Channel Identification",
+        description: "Determine optimal sourcing channels — LinkedIn, referrals, job boards, university pipelines, communities.",
+      },
+      {
+        title: "Outreach Campaign",
+        description: "Proactive outreach to passive candidates via LinkedIn InMail, personalized messages, and referral requests.",
+      },
+    ],
+    kpis: [
+      { label: "Sourced Candidates/Role", value: 45, unit: "count", target: 60, trend: "up" },
+      { label: "Response Rate", value: 18, unit: "%", target: 30, trend: "up" },
+      { label: "Source-to-Screen Rate", value: 22, unit: "%", target: 35, trend: "up" },
+      { label: "Cost per Application", value: 28, unit: "$", target: 15, trend: "down" },
+    ],
+    tasks: [
+      { title: "Talent market mapping", owner: "Sourcing Team" },
+      { title: "Boolean search & candidate identification", owner: "Sourcing Team" },
+      { title: "Personalized outreach messages", owner: "Sourcing Team" },
+      { title: "Referral program activation", owner: "Recruiter" },
+      { title: "Pipeline tracking & reporting", owner: "Sourcing Team" },
+    ],
+    tools: [
+      { name: "LinkedIn Recruiter", category: "current", description: "Primary sourcing and InMail platform" },
+      { name: "Workday CRM", category: "current", description: "Candidate pipeline tracking" },
+      { name: "HireEZ", category: "recommended", description: "AI sourcing across 750M+ profiles on 45+ platforms with automated outreach" },
+      { name: "Programmatic Ads", category: "recommended", description: "ML-driven job ad distribution optimized for cost-per-application and quality" },
+      { name: "SeekOut", category: "recommended", description: "AI talent search with diversity filters and talent pool analytics" },
+    ],
+    aiOpportunities: [
+      {
+        title: "AI Sourcing Agents",
+        description: "Autonomous agents that scan databases, social platforms, and professional networks to identify and engage passive talent.",
+        estimatedImpact: "62% reduction in profile reviews, 4 hours saved per role",
+        effort: "medium",
+        caseStudy: "LinkedIn Hiring Assistant: Scours 1B+ member profiles, early adopters report 6-8 hours saved per search.",
+      },
+      {
+        title: "Programmatic Job Advertising",
+        description: "ML platforms auto-distribute postings across channels, optimizing budgets based on application quality in real-time.",
+        estimatedImpact: "40% lower cost-per-application",
+        effort: "medium",
+      },
+      {
+        title: "Skills-Based Matching",
+        description: "AI infers skills from resumes and career trajectories rather than keywords, expanding the qualified candidate pool.",
+        estimatedImpact: "30% more qualified candidates surfaced",
+        effort: "medium",
+        caseStudy: "Amazon PXT: ML matches candidates to relevant roles using NLP on resume content.",
+      },
+    ],
+    aiEffectiveness: [
+      { metric: "Profile Reviews Needed", before: 100, after: 38, unit: "per role", source: "LinkedIn / Computer Weekly" },
+      { metric: "Recruiter Time per Search", before: 12, after: 4, unit: "hours", source: "LinkedIn Hiring Assistant" },
+      { metric: "Candidate Diversity", before: 25, after: 40, unit: "%", source: "Amazon PXT Diversity Data" },
+    ],
+    traditionalApproach: "Job boards, referrals, agency outreach. Manual Boolean searches. Spray-and-pray InMail campaigns.",
+    challenges: [
+      "Low response rates on cold outreach (industry avg 18%)",
+      "Over-reliance on LinkedIn as single channel",
+      "Manual Boolean searching is time-intensive",
+      "Difficulty reaching passive candidates in competitive AI talent market",
+    ],
+  },
+  {
+    id: "screening",
+    number: 4,
+    name: "Screening",
+    shortName: "Screening",
+    description:
+      "Recruiter conducts the first call — an info session where the candidate learns about the role and company. If the candidate is interested in pursuing, they advance to the onsite.",
+    color: STAGE_COLORS[3],
+    icon: "Phone",
+    responsibleTeam: ["Recruiter"],
+    subSteps: [
+      {
+        title: "Recruiter Call / Info Session",
+        description: "First touchpoint — recruiter shares role details, team culture, growth opportunity. Assesses candidate interest and basic qualification fit.",
+      },
+      {
+        title: "Qualification Assessment",
+        description: "Recruiter evaluates experience alignment, salary expectations, visa status, availability, and motivation.",
+      },
+      {
+        title: "Candidate Decision",
+        description: "If candidate is interested in pursuing, recruiter advances them to onsite interview stage.",
+      },
+    ],
+    kpis: [
+      { label: "Screen-to-Interview Rate", value: 35, unit: "%", target: 45, trend: "up" },
+      { label: "Avg. Screening Time", value: 4.5, unit: "days", target: 2, trend: "down" },
+      { label: "Candidate Drop-off Rate", value: 28, unit: "%", target: 15, trend: "down" },
+      { label: "Screens per Recruiter/Week", value: 18, unit: "count", target: 25, trend: "up" },
+    ],
+    tasks: [
+      { title: "Schedule recruiter screen", owner: "Recruiter" },
+      { title: "Conduct info session call", owner: "Recruiter" },
+      { title: "Qualification & motivation assessment", owner: "Recruiter" },
+      { title: "Update candidate status in Workday", owner: "Recruiter" },
+      { title: "Advance or reject with feedback", owner: "Recruiter" },
+    ],
+    tools: [
+      { name: "Phone/Zoom", category: "current", description: "Screening call platform" },
+      { name: "Workday", category: "current", description: "Candidate status tracking" },
+      { name: "Outlook Calendar", category: "current", description: "Manual scheduling" },
+      { name: "Paradox (Olivia)", category: "recommended", description: "Conversational AI chatbot for automated screening via text/WhatsApp, instant scheduling" },
+      { name: "Calendly/GoodTime", category: "recommended", description: "AI-powered scheduling that syncs with recruiter calendars" },
+    ],
+    aiOpportunities: [
+      {
+        title: "AI Chatbot Pre-Screening",
+        description: "Conversational AI conducts initial screening via text/WhatsApp, qualifies candidates, and schedules calls — application to scheduled interview in minutes.",
+        estimatedImpact: "90% reduction in time-to-screen for high-volume roles",
+        effort: "medium",
+        caseStudy: "Paradox's Olivia: Used by major retailers and hospitality chains for high-volume hiring with dramatic drops in time-to-interview.",
+      },
+      {
+        title: "AI Resume Parsing & Shortlisting",
+        description: "AI processes hundreds of resumes per second, analyzing qualifications with far greater consistency than the 6-second manual review.",
+        estimatedImpact: "85% time savings in resume review",
+        effort: "low",
+        caseStudy: "72% of recruiters report AI is most useful for sourcing and screening (HireTruffle).",
+      },
+      {
+        title: "Automated Scheduling",
+        description: "AI syncs with recruiter calendars to instantly find and book optimal interview slots, eliminating email back-and-forth.",
+        estimatedImpact: "60-80% reduction in scheduling time",
+        effort: "low",
+      },
+    ],
+    aiEffectiveness: [
+      { metric: "Time-to-Screen", before: 5, after: 0.5, unit: "days", source: "Paradox Case Studies" },
+      { metric: "Resume Review Time", before: 30, after: 5, unit: "min/batch", source: "HireTruffle Industry Survey" },
+      { metric: "Candidate Completion Rate", before: 50, after: 96, unit: "%", source: "Unilever AI Screening" },
+    ],
+    traditionalApproach: "Manual resume review (6 seconds per resume), keyword filtering, phone tag for scheduling, subjective qualification assessment.",
+    challenges: [
+      "Recruiter bandwidth bottleneck — too many screens per week",
+      "Scheduling friction causes candidate drop-off",
+      "Inconsistent qualification criteria across recruiters",
+      "No data on why candidates drop off after screening",
+    ],
+  },
+  {
+    id: "interview-assessment",
+    number: 5,
+    name: "Interview & Assessment",
+    shortName: "Interview",
+    description:
+      "Candidates go through onsite interviews: a technical/skills test, three rounds with hiring managers, and a bar raiser interview. Followed by a structured debrief.",
+    color: STAGE_COLORS[4],
+    icon: "Users",
+    responsibleTeam: ["Hiring Managers (x3)", "Bar Raiser", "Recruiter"],
+    subSteps: [
+      {
+        title: "Technical/Skills Assessment",
+        description: "Role-relevant test — coding challenge, case study, or portfolio review depending on the role type.",
+      },
+      {
+        title: "HM Interviews (3 rounds)",
+        description: "Three hiring managers conduct structured behavioral and competency interviews, each evaluating different dimensions.",
+      },
+      {
+        title: "Bar Raiser Interview",
+        description: "Senior leader outside the hiring team assesses overall caliber and cultural fit — ensures hiring bar stays high.",
+      },
+      {
+        title: "Debrief",
+        description: "All interviewers convene to share independent assessments, discuss strengths/concerns, and reach a hire/no-hire decision.",
+      },
+    ],
+    kpis: [
+      { label: "Interview-to-Offer Rate", value: 20, unit: "%", target: 27, trend: "up" },
+      { label: "Time in Interview Stage", value: 14, unit: "days", target: 7, trend: "down" },
+      { label: "Interviewer NPS", value: 72, unit: "score", target: 85, trend: "up" },
+      { label: "Debrief Turnaround", value: 3, unit: "days", target: 1, trend: "down" },
+    ],
+    tasks: [
+      { title: "Schedule onsite interviews (5 sessions)", owner: "Recruiter" },
+      { title: "Prepare interview questions & rubrics", owner: "Hiring Managers" },
+      { title: "Conduct technical assessment", owner: "Technical Lead" },
+      { title: "Conduct HM interviews (3 rounds)", owner: "Hiring Managers" },
+      { title: "Conduct bar raiser interview", owner: "Bar Raiser" },
+      { title: "Submit independent written feedback", owner: "All Interviewers" },
+      { title: "Facilitate debrief meeting", owner: "Recruiter" },
+    ],
+    tools: [
+      { name: "Zoom/On-site", category: "current", description: "Interview platform" },
+      { name: "CoderPad/HackerRank", category: "current", description: "Technical assessments" },
+      { name: "Workday", category: "current", description: "Feedback collection and tracking" },
+      { name: "HireVue", category: "recommended", description: "AI video interview platform with structured evaluation and competency analysis" },
+      { name: "Metaview", category: "recommended", description: "AI interview note-taker that auto-generates structured summaries and evaluation scorecards" },
+      { name: "BrightHire", category: "recommended", description: "Interview intelligence platform for consistent structured interviews" },
+    ],
+    aiOpportunities: [
+      {
+        title: "AI-Assisted Coding Interviews",
+        description: "Evaluate how candidates collaborate with AI tools during technical interviews — reflecting real-world engineering.",
+        estimatedImpact: "Better signal on actual job performance",
+        effort: "medium",
+        caseStudy: "Meta (Oct 2025): Piloted AI-enabled coding interviews where candidates use built-in AI assistant in CoderPad.",
+      },
+      {
+        title: "AI Interview Prep for Recruiters",
+        description: "AI role-plays candidate and HM conversations, helping recruiters prepare culturally informed questions.",
+        estimatedImpact: "Higher interviewer preparation quality",
+        effort: "low",
+        caseStudy: "Google: Recruiters use Gemini to role-play conversations and NotebookLM for cultural research on international candidates.",
+      },
+      {
+        title: "Structured Rubric Enforcement",
+        description: "AI ensures interviewers use consistent evaluation criteria, reducing bias. Auto-generates debrief summaries from feedback.",
+        estimatedImpact: "Reduction in individual interviewer bias",
+        effort: "medium",
+        caseStudy: "Google: Uses structured 7-point evaluation scale with hiring committee review.",
+      },
+    ],
+    aiEffectiveness: [
+      { metric: "Interview-to-Hire Rate", before: 20, after: 27, unit: "%", source: "Industry Average 2024" },
+      { metric: "Scheduling Coordination Time", before: 45, after: 10, unit: "min/candidate", source: "GoodTime Platform Data" },
+      { metric: "Interviewer Bias Variance", before: 35, after: 12, unit: "% spread", source: "BrightHire Analytics" },
+    ],
+    traditionalApproach: "Unstructured interviews, scheduling via email chains, subjective evaluations, long committee cycles, inconsistent rubrics.",
+    challenges: [
+      "Scheduling 5 interviewers is a coordination nightmare",
+      "Debrief delays — interviewers don't submit feedback promptly",
+      "Inconsistent evaluation criteria across interviewers",
+      "Candidates using AI tools during assessments (counter-trend: in-person rising from 24% to 38%)",
+      "Bar raiser availability bottleneck",
+    ],
+  },
+  {
+    id: "offer-negotiation",
+    number: 6,
+    name: "Offer & Negotiation",
+    shortName: "Offer",
+    description:
+      "Once the debrief results in a hire decision, the recruiter extends an offer, conducts compensation benchmarking, and negotiates terms with the candidate.",
+    color: STAGE_COLORS[5],
+    icon: "Handshake",
+    responsibleTeam: ["Recruiter", "Compensation Team", "Hiring Manager"],
+    subSteps: [
+      {
+        title: "Offer Preparation",
+        description: "Recruiter works with comp team to build a competitive offer package — base, bonus, equity, benefits.",
+      },
+      {
+        title: "Offer Extension",
+        description: "Recruiter presents the offer to the candidate, highlighting total compensation and growth opportunity.",
+      },
+      {
+        title: "Negotiation",
+        description: "Handle counter-offers, competitor matching, signing bonuses, start date flexibility, and relocation packages.",
+      },
+    ],
+    kpis: [
+      { label: "Offer Acceptance Rate", value: 78, unit: "%", target: 90, trend: "up" },
+      { label: "Offer-to-Accept Time", value: 8, unit: "days", target: 4, trend: "down" },
+      { label: "Comp Competitiveness", value: 72, unit: "percentile", target: 75, trend: "flat" },
+      { label: "Counter-Offer Rate", value: 35, unit: "%", target: 20, trend: "down" },
+    ],
+    tasks: [
+      { title: "Compensation benchmarking", owner: "Compensation Team" },
+      { title: "Offer package assembly", owner: "Recruiter" },
+      { title: "Approval chain (if above band)", owner: "SVP / Comp Team" },
+      { title: "Offer presentation call", owner: "Recruiter" },
+      { title: "Negotiation & counter-offer handling", owner: "Recruiter" },
+      { title: "Offer letter generation", owner: "Recruiter" },
+    ],
+    tools: [
+      { name: "Workday Compensation", category: "current", description: "Salary bands and offer letter generation" },
+      { name: "Email", category: "current", description: "Offer communication and negotiation" },
+      { name: "Pave/Levels.fyi", category: "recommended", description: "Real-time market compensation data for competitive benchmarking" },
+      { name: "Compete (Payscale)", category: "recommended", description: "AI-powered comp recommendations based on role, location, and candidate seniority" },
+    ],
+    aiOpportunities: [
+      {
+        title: "AI Compensation Benchmarking",
+        description: "Real-time market data platforms recommend competitive packages tailored to role, location, and candidate profile.",
+        estimatedImpact: "15% improvement in offer acceptance rates",
+        effort: "medium",
+      },
+      {
+        title: "Offer Acceptance Prediction",
+        description: "ML models predict offer acceptance probability based on candidate signals, comp data, and competitor activity.",
+        estimatedImpact: "Reduce offer rejections by 25%",
+        effort: "high",
+      },
+      {
+        title: "Automated Offer Letter Generation",
+        description: "AI generates customized offer letters from templates, auto-filling compensation details and reducing manual work.",
+        estimatedImpact: "80% faster offer processing",
+        effort: "low",
+      },
+    ],
+    aiEffectiveness: [
+      { metric: "Offer Cycle Time", before: 8, after: 3, unit: "days", source: "Workday AI Offer Management" },
+      { metric: "Offer Acceptance Rate", before: 78, after: 90, unit: "%", source: "Pave Platform Data" },
+      { metric: "Comp Research Time", before: 4, after: 0.5, unit: "hours", source: "Compete/Payscale AI" },
+    ],
+    traditionalApproach: "Manual comp research, static templates, slow approval chains, email-based negotiation with no tracking.",
+    challenges: [
+      "Comp data is stale — market moves faster than annual surveys",
+      "Approval chain delays lose hot candidates to competitors",
+      "No predictive insight on whether candidate will accept",
+      "Hyper-competitive AI talent market — extreme compensation expectations",
+    ],
+  },
+  {
+    id: "onboarding",
+    number: 7,
+    name: "Onboarding",
+    shortName: "Onboarding",
+    description:
+      "New hire completes documentation, goes through orientation, receives role-specific training, and integrates into their team over the first 90 days.",
+    color: STAGE_COLORS[6],
+    icon: "Rocket",
+    responsibleTeam: ["HR Operations", "Hiring Manager", "IT", "L&D Team"],
+    subSteps: [
+      {
+        title: "Pre-boarding",
+        description: "Documentation, background checks, IT equipment provisioning, system access setup before day 1.",
+      },
+      {
+        title: "Orientation",
+        description: "Company culture, values, policies, benefits walkthrough, and introduction to key teams and stakeholders.",
+      },
+      {
+        title: "Role-Specific Training",
+        description: "Technical onboarding, tool training, project context, and assignment of a buddy/mentor.",
+      },
+      {
+        title: "90-Day Integration",
+        description: "Regular check-ins at 30/60/90 days, performance goal setting, and feedback loops with the hiring manager.",
+      },
+    ],
+    kpis: [
+      { label: "Day-1 Readiness", value: 65, unit: "%", target: 95, trend: "up" },
+      { label: "Time-to-Productivity", value: 90, unit: "days", target: 60, trend: "down" },
+      { label: "90-Day Retention", value: 88, unit: "%", target: 95, trend: "up" },
+      { label: "New Hire NPS", value: 68, unit: "score", target: 85, trend: "up" },
+    ],
+    tasks: [
+      { title: "Pre-boarding documentation", owner: "HR Operations" },
+      { title: "IT equipment & access setup", owner: "IT" },
+      { title: "Orientation program delivery", owner: "HR Operations" },
+      { title: "Buddy/mentor assignment", owner: "Hiring Manager" },
+      { title: "30/60/90-day check-ins", owner: "Hiring Manager" },
+      { title: "Role-specific training plan", owner: "L&D Team" },
+    ],
+    tools: [
+      { name: "Workday Onboarding", category: "current", description: "Documentation and task tracking" },
+      { name: "Confluence/Wiki", category: "current", description: "Knowledge base and documentation" },
+      { name: "Email/Slack", category: "current", description: "Communication and introductions" },
+      { name: "Enboarder", category: "recommended", description: "AI-driven onboarding workflows with personalized learning paths" },
+      { name: "Viva Learning", category: "recommended", description: "Microsoft's AI-powered personalized training recommendations based on role and skills profile" },
+    ],
+    aiOpportunities: [
+      {
+        title: "NLP Chatbot for New Hires",
+        description: "24/7 AI assistant that answers new hire queries about IT systems, benefits, policies, and procedures.",
+        estimatedImpact: "40% reduction in HR support tickets",
+        effort: "medium",
+        caseStudy: "Unilever's Unabot: NLP chatbot for employee orientation and insights gathering.",
+      },
+      {
+        title: "Personalized Learning Paths",
+        description: "AI generates custom training plans based on role requirements and the individual's existing skill profile.",
+        estimatedImpact: "30% faster time-to-productivity",
+        effort: "medium",
+        caseStudy: "LinkedIn Viva Learning: Auto-triggers personalized training based on new hire profile.",
+      },
+      {
+        title: "AI-Driven Engagement Tracking",
+        description: "Sentiment analysis on check-in notes and surveys to flag at-risk new hires before they disengage.",
+        estimatedImpact: "Early warning on 70% of flight-risk new hires",
+        effort: "high",
+      },
+    ],
+    aiEffectiveness: [
+      { metric: "Time-to-Productivity", before: 90, after: 60, unit: "days", source: "Enboarder Client Data" },
+      { metric: "HR Support Tickets (New Hires)", before: 45, after: 18, unit: "per month", source: "Unilever Unabot" },
+      { metric: "90-Day Retention", before: 85, after: 94, unit: "%", source: "Microsoft Dynamics 365 HR" },
+    ],
+    traditionalApproach: "Paper-based forms, generic orientation, inconsistent follow-up, no personalization in training.",
+    challenges: [
+      "Day-1 readiness failures — equipment and access not ready",
+      "Generic orientation doesn't account for role differences",
+      "No structured 30/60/90 follow-up — new hires fall through cracks",
+      "Knowledge scattered across multiple systems",
+    ],
+  },
+];
