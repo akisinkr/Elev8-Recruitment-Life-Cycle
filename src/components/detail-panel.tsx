@@ -45,13 +45,13 @@ function AccordionItem({
               backgroundColor: isOpen ? stageColor : "transparent",
             }}
           />
-          <span className="text-[18px] font-semibold tracking-wide text-[#E2E8F0]">
+          <span className="text-[20px] font-semibold tracking-wide text-[#E2E8F0]">
             {title}
           </span>
         </div>
         <div className="flex items-center gap-3">
           <span
-            className="text-[15px] font-medium"
+            className="text-[16px] font-medium tracking-[0.01em]"
             style={{ color: statColor || "#94A3B8" }}
           >
             {stat}
@@ -100,7 +100,7 @@ function ProcessContent({ stage }: { stage: RecruitmentStage }) {
         <div key={i} className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <div
-              className="w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-bold"
+              className="w-8 h-8 rounded-full flex items-center justify-center text-[14px] font-bold"
               style={{
                 backgroundColor: `${stage.color}25`,
                 color: stage.color,
@@ -108,7 +108,7 @@ function ProcessContent({ stage }: { stage: RecruitmentStage }) {
             >
               {i + 1}
             </div>
-            <span className="text-[15px] font-medium text-[#CBD5E1]">{step.title}</span>
+            <span className="text-[16px] font-medium tracking-[0.01em] text-[#CBD5E1]">{step.title}</span>
           </div>
           {i < stage.subSteps.length - 1 && (
             <span className="text-[#78879B] text-[14px]">→</span>
@@ -133,7 +133,7 @@ function MetricsContent({ stage }: { stage: RecruitmentStage }) {
 
         return (
           <div key={i} className="flex items-center gap-4">
-            <span className="text-[15px] font-medium text-[#CBD5E1] w-36 flex-shrink-0 truncate">
+            <span className="text-[16px] font-medium tracking-[0.01em] text-[#CBD5E1] w-36 flex-shrink-0 truncate">
               {kpi.label}
             </span>
             <div className="flex-1 h-[4px] rounded-full bg-white/[0.08]">
@@ -160,23 +160,23 @@ function ActionsContent({ stage }: { stage: RecruitmentStage }) {
       {stage.tasks.slice(0, 5).map((item, i) => (
         <div key={i} className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-[#78879B] flex-shrink-0" />
-          <span className="text-[15px] font-medium text-[#CBD5E1] flex-1 truncate">
+          <span className="text-[16px] font-medium tracking-[0.01em] text-[#CBD5E1] flex-1 truncate">
             {item.title}
           </span>
-          <span className="text-[14px] text-[#94A3B8] flex-shrink-0">
+          <span className="text-[15px] text-[#94A3B8] tracking-[0.01em] flex-shrink-0">
             {item.owner}
           </span>
         </div>
       ))}
       {stage.tools.filter((t) => t.category === "current").length > 0 && (
         <div className="flex items-center gap-2 mt-4 pt-3 border-t border-white/[0.06] flex-wrap">
-          <span className="text-[13px] text-[#78879B] uppercase tracking-wider font-medium">Tools</span>
+          <span className="text-[13px] text-[#78879B] uppercase tracking-[0.08em] font-semibold">Tools</span>
           {stage.tools
             .filter((t) => t.category === "current")
             .map((tool, i) => (
               <span
                 key={i}
-                className="text-[14px] font-medium px-3 py-1 rounded-full"
+                className="text-[15px] font-medium px-3 py-1 rounded-full tracking-[0.01em]"
                 style={{
                   backgroundColor: `${stage.color}15`,
                   color: stage.color,
@@ -202,8 +202,8 @@ function AIContent({ stage }: { stage: RecruitmentStage }) {
             style={{ backgroundColor: stage.color }}
           />
           <div className="flex-1 min-w-0">
-            <span className="text-[15px] font-medium text-[#E2E8F0]">{ai.title}</span>
-            <span className="text-[14px] text-[#94A3B8] ml-2">
+            <span className="text-[16px] font-medium tracking-[0.01em] text-[#E2E8F0]">{ai.title}</span>
+            <span className="text-[15px] text-[#94A3B8] tracking-[0.01em] ml-2">
               {ai.estimatedImpact}
             </span>
           </div>
@@ -222,7 +222,7 @@ function AIContent({ stage }: { stage: RecruitmentStage }) {
                   <span className="text-[24px] font-bold text-[#80BC27]">
                     {Math.abs(improvement)}%
                   </span>
-                  <span className="text-[13px] font-medium text-[#94A3B8]">
+                  <span className="text-[14px] font-medium text-[#94A3B8] tracking-[0.02em]">
                     {eff.metric}
                   </span>
                 </div>
@@ -264,12 +264,12 @@ export function DetailPanel({ stage, onClose }: DetailPanelProps) {
       <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.08]">
         <div className="flex items-center gap-3 min-w-0">
           <span
-            className="text-[20px] font-bold"
+            className="text-[22px] font-bold"
             style={{ color: stage.color }}
           >
             {stage.number}.
           </span>
-          <h2 className="text-[20px] font-semibold text-[#E2E8F0] truncate">
+          <h2 className="text-[22px] font-semibold text-[#E2E8F0] truncate">
             {stage.name}
           </h2>
         </div>
@@ -286,7 +286,7 @@ export function DetailPanel({ stage, onClose }: DetailPanelProps) {
         {stage.responsibleTeam.slice(0, 4).map((team) => (
           <span
             key={team}
-            className="text-[13px] font-medium text-[#94A3B8] px-3 py-1 rounded-full bg-white/[0.06]"
+            className="text-[14px] font-medium text-[#CBD5E1] tracking-[0.02em] px-3 py-1.5 rounded-full bg-white/[0.06]"
           >
             {team}
           </span>

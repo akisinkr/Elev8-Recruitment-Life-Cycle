@@ -39,10 +39,10 @@ export default function LoginPage() {
             <Lock className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-2xl font-bold text-foreground">
-            Coupang Recruitment
+            Recruiting Intelligence
           </h1>
           <p className="text-muted-foreground mt-1 text-sm">
-            Enter password to access the dashboard
+            Enter password to launch
           </p>
         </div>
 
